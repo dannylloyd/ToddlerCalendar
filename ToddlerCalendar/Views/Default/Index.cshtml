@@ -1,9 +1,12 @@
-﻿
+﻿@using ToddlerCalendar.Models;
 @{
     ViewBag.Title = "Index";
+    //var today = DateTime.Parse("3/30/18");
     var today = DateTime.Now;
-}
-@functions
+    var activities = Newtonsoft.Json.JsonConvert.DeserializeObject<Activity[]>(System.IO.File.ReadAllText(Server.MapPath("~\\Data\\Activites.json")));
+
+    }
+    @functions
 {
     private string CurrentSeason(DateTime date)
     {
@@ -33,6 +36,7 @@
         }*/
         #left, #center, #right {
             padding: 20px;
+            min-height: 720px;
         }
 
         #left {
@@ -65,9 +69,10 @@
             background-color: #FFF;
             padding: 5px 15px;
             border-radius: 5px;
-            margin: 10px 0;
+            margin: 20px 0;
             position: relative;
             border: solid 4px #e5e619;
+            min-height: 101px;
         }
 
             .item .label {
@@ -177,7 +182,7 @@
                 <div class="label">
                     <h2>Season</h2>
                 </div>
-                <span class="item-value blue">@CurrentSeason(today)</span>
+                <span class="item-value blue">@CurrentSeason(today) <img style="vertical-align: top;" src="~/Content/seasons/@(CurrentSeason(today).ToLower())tree_white.png" width="55" /></span>
             </div>
             <div class="item">
                 <div class="label">
@@ -199,7 +204,19 @@
                 <div class="label">
                     <h2>Activities</h2>
                 </div>
-
+                @foreach (var activity in activities.Where(x=> x.DaysToDisplay.Contains(today.DayOfWeek)))
+                {
+                    <span class="item-value blue">@activity.Name <img style="padding-bottom:5px;" src="~/Content/activities/@activity.IconFile" width="@activity.IconWidth" /></span>
+                }
+            </div>
+            <div class="item">
+                <div class="label">
+                    <h2>Holiday</h2>
+                </div>
+                @foreach (var holiday in Holidays.GetAll().Where(x => today >= x.Date.AddDays(-2) && today <= x.Date).OrderBy(x=> x.Date))
+                {
+                    <span class="item-value blue">@holiday.Name</span>
+                }
             </div>
         </div>
     </div>

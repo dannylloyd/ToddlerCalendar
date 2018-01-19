@@ -1,0 +1,39 @@
+﻿[
+  {
+    "Name": "Work",
+    "IconFile": "manworking_white.png",
+    "IconWidth": 55,
+    "DaysToDisplay": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "Name": "Church",
+    "IconFile": "church.png",
+    "IconWidth": 55,
+    "DaysToDisplay": [
+      0
+    ]
+  },
+  {
+    "Name": "School",
+    "IconFile": "schoolbuilding.png",
+    "IconWidth": 55,
+    "DaysToDisplay": [
+      2,
+      4
+    ]
+  },
+  {
+    "Name": "TEAM Kids",
+    "IconFile": "kidsplaying.png",
+    "IconWidth": 55,
+    "DaysToDisplay": [
+      3
+    ]
+  }
+]

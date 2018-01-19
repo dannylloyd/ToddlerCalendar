@@ -6,9 +6,11 @@ using System.Web.Mvc;
 
 namespace ToddlerCalendar.Controllers
 {
+    [RoutePrefix("")]
     public class DefaultController : Controller
     {
         // GET: Default
+        [Route("")]
         public ActionResult Index()
         {
             return View();
