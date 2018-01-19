@@ -107,6 +107,7 @@
     <Content Include="Content\bootstrap4.min.css" />
     <Content Include="Content\activities\church.png" />
     <None Include="Data\Activites.json" />
+    <Content Include="Example.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Sunny.png" />
     <Content Include="Web.config" />
